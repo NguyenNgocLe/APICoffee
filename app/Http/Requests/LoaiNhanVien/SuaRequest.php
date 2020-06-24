@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\KhachHang;
+namespace App\Http\Requests\LoaiNhanVien;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuenMatKhauRequest extends FormRequest
+class SuaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,10 +21,15 @@ class QuenMatKhauRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            //
+            'ten_loai' => 'bail|required|regex://'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'ten_loai.required' => 'Tên loại nhân viên không được trống!'
         ];
     }
 }
