@@ -10,13 +10,17 @@ use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Validator;
 use App\LoaiNhanVien;
+use App\Http\Requests\LoaiNhanVien\ThemRequest;
 
 class LoaiNhanVienController extends Controller {
     public function themMoi(Request $req) {
         $tonTaiTenDangNhap = LoaiNhanVien::whereTenLoai($req->ten_loai)->first();
-        if(empty($req->ten_loai)) {
-            return response()->json([
-                'thongBao'  => 'Tên loại nhân viên không được trống!',
+        $hopLe = new ThemRequest;
+        $thamDinh = Validator::make($req->all(), $hopLe->rules(), $hopLe->messages());
+        $thongBaoLoi = $thamDinh->messages()->first();
+        if($thamDinh) {
+            return respone()->json([
+                'thongBao'  => $thongBaoLoi,
                 'maPhanHoi' => 406
             ]);
         }

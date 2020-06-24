@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\NhanVien;
 use App\LoaiNhanVien;
@@ -92,26 +93,25 @@ class NhanVienController extends Controller {
         }
         $thongTinDangNhap = [
             'ten_dang_nhap' => $req->ten_dang_nhap,
-            'mat_khau'      => $req->mat_khau
+            'password'      => $req->mat_khau
         ];
         if($maXacThuc = auth('NhanVien')->attempt($thongTinDangNhap)) {
-            $thongTinNhanVien = NhanVien::find(auth('NhanVien')->user()->id());
-            $thongTinNhanVien['maXacThuc'] = $maXacThuc;
             return response()->json([
-                'thongBao'  => 'Đăng nhập thành công!',
-                'maPhanHoi' => 200,
-                'duLieu'    => $thongTinNhanVien
+                    'thongBao'  => 'Đăng nhập thành công!',
+                    'maPhanHoi' => 200,
+                    'maXacThuc' => $maXacThuc
             ]);
         }
+
         return response()->json([
             'thongBao'  => 'Tên đăng nhập hoặc mật khẩu không chính xác!',
             'maPhanHoi' => 406,
-            'duLieu'    => $thongTinNhanVien
+            'duLieu'    => null
         ]);
     }
 
     public function quenMatKhau() {
-
+        
     }
 
     public function capNhatThongTin() {

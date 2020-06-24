@@ -18,7 +18,7 @@ class QuanTriVien extends Migration
             $table->string('ten_dang_nhap')->nullable();
             $table->string('mat_khau')->nullable();
             $table->string('ho_ten')->nullable();
-            $table->boolean('xoa')->nullable()->default(0);
+            $table->boolean('xoa')->nullable();
             $table->string('ghi_chu')->nullable();
             $table->timestamps();
         });

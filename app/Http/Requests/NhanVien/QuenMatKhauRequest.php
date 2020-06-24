@@ -24,7 +24,13 @@ class QuenMatKhauRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'bail|required|regex://'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'email.required' => 'Email không được trống!'
         ];
     }
 }

@@ -15,12 +15,14 @@ class Roles extends Seeder
     {
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
         Permission::findOrCreate('khachHang', 'KhachHang');
+        //
         Permission::findOrCreate('thamSo', 'QuanTriVien');
         Permission::findOrCreate('khachHang', 'QuanTriVien');
         Permission::findOrCreate('lichSuDiem', 'QuanTriVien');
         Permission::findOrCreate('hoaDonBan', 'QuanTriVien');
         Permission::findOrCreate('chiTietHoaDonBan', 'QuanTriVien');
         Permission::findOrCreate('thucUong', 'QuanTriVien');
+        Permission::findOrCreate('loaiThucUong', 'QuanTriVien');
         Permission::findOrCreate('quanTriVien', 'QuanTriVien');
         Permission::findOrCreate('nhanVien', 'QuanTriVien');
         Permission::findOrCreate('loaiNhanVien', 'QuanTriVien');
@@ -28,29 +30,29 @@ class Roles extends Seeder
         Permission::findOrCreate('chiTietHoaDonNhap', 'QuanTriVien');
         Permission::findOrCreate('nguyenLieu', 'QuanTriVien');
         //
-        Permission::findOrCreate('tnLichSuDiem', 'ThuNgan');
-        Permission::findOrCreate('tnHoaDonBan', 'ThuNgan');
-        Permission::findOrCreate('tnChiTietHoaDonBan', 'ThuNgan');
-        Permission::findOrCreate('tnThucUong', 'ThuNgan');
-        Permission::findOrCreate('tnLoaiThucUong', 'ThuNgan');
+        Permission::findOrCreate('tnLichSuDiem', 'NhanVien');
+        Permission::findOrCreate('tnHoaDonBan', 'NhanVien');
+        Permission::findOrCreate('tnChiTietHoaDonBan', 'NhanVien');
+        Permission::findOrCreate('tnThucUong', 'NhanVien');
+        Permission::findOrCreate('tnLoaiThucUong', 'NhanVien');
         //
-        Permission::findOrCreate('pcHoaDonBan', 'PhaChe');
-        Permission::findOrCreate('pcChiTietHoaDonBan', 'PhaChe');
+        Permission::findOrCreate('pcHoaDonBan', 'NhanVien');
+        Permission::findOrCreate('pcChiTietHoaDonBan', 'NhanVien');
         //
-        Permission::findOrCreate('pvHoaDonBan', 'PhucVu');
-        Permission::findOrCreate('pvChiTietHoaDonBan', 'PhucVu');
+        Permission::findOrCreate('pvHoaDonBan', 'NhanVien');
+        Permission::findOrCreate('pvChiTietHoaDonBan', 'NhanVien');
         //
-        Permission::findOrCreate('kHoaDonNhap', 'Kho');
-        Permission::findOrCreate('kChiTietHoaDonNhap', 'Kho');
-        Permission::findOrCreate('kNguyenLieu', 'Kho');
+        Permission::findOrCreate('kHoaDonNhap', 'NhanVien');
+        Permission::findOrCreate('kChiTietHoaDonNhap', 'NhanVien');
+        Permission::findOrCreate('kNguyenLieu', 'NhanVien');
 
         // phân quyền chức năng của nhân viên
         Role::findOrCreate('khachHang', 'KhachHang');
         Role::findOrCreate('quanTriVien', 'QuanTriVien');
-        Role::findOrCreate('thuNgan', 'ThuNgan');
-        Role::findOrCreate('kho', 'Kho');
-        Role::findOrCreate('phaChe', 'PhaChe');
-        Role::findOrCreate('phucVu', 'PhucVu');
+        Role::findOrCreate('thuNgan', 'NhanVien');
+        Role::findOrCreate('kho', 'NhanVien');
+        Role::findOrCreate('phaChe', 'NhanVien');
+        Role::findOrCreate('phucVu', 'NhanVien');
         Role::findOrCreate('quanTriVienToanQuyen', 'QuanTriVien');
 
         $vaiTroQuanTriVien = Role::findByName('quanTriVien', 'QuanTriVien')
@@ -61,6 +63,7 @@ class Roles extends Seeder
                                     'hoaDonBan',
                                     'chiTietHoaDonBan',
                                     'thucUong',
+                                    'loaiThucUong',
                                     'nhanVien',
                                     'loaiNhanVien',
                                     'hoaDonNhap',
@@ -76,6 +79,7 @@ class Roles extends Seeder
                                             'hoaDonBan',
                                             'chiTietHoaDonBan',
                                             'thucUong',
+                                            'loaiThucUong',
                                             'nhanVien',
                                             'loaiNhanVien',
                                             'hoaDonNhap',
@@ -84,7 +88,7 @@ class Roles extends Seeder
                                             'quanTriVien',
                                         ]);
 
-        $vaiTroThuNgan = Role::findByName('thuNgan', 'ThuNgan')
+        $vaiTroThuNgan = Role::findByName('thuNgan', 'NhanVien')
                              ->givePermissionTo([
                                 'tnLichSuDiem',
                                 'tnHoaDonBan',
@@ -93,19 +97,19 @@ class Roles extends Seeder
                                 'tnLoaiThucUong',
                             ]);
 
-        $vaiTroPhaChe = Role::findByName('phaChe', 'PhaChe')
+        $vaiTroPhaChe = Role::findByName('phaChe', 'NhanVien')
                             ->givePermissionTo([
                                 'pcHoaDonBan',
                                 'pcChiTietHoaDonBan',
                             ]);
 
-        $vaiTroPhucVu = Role::findByName('phucVu', 'PhucVu')
+        $vaiTroPhucVu = Role::findByName('phucVu', 'NhanVien')
                             ->givePermissionTo([
                                 'pvHoaDonBan',
                                 'pvChiTietHoaDonBan',
                             ]);
 
-        $vaiTroKho = Role::findByName('kho', 'Kho')
+        $vaiTroKho = Role::findByName('kho', 'NhanVien')
                             ->givePermissionTo([
                                 'kHoaDonNhap',
                                 'kChiTietHoaDonNhap',

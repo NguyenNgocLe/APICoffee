@@ -14,8 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'NhanVien'
     ],
 
     /*
@@ -36,40 +35,19 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-
-        'KhachHang' => [
+        'KhachHang'    => [
             'driver'   => 'jwt',
             'provider' => 'khachHang'
         ],
 
-        'QuanTriVien' => [
+        'QuanTriVien'  => [
             'driver'   => 'jwt',
             'provider' => 'quanTriVien'
         ],
-
-         'ThuNgan' => [
-             'driver'   => 'jwt',
-             'provider' => 'nhanVien'
-         ],
-
-        'Kho' => [
+        'NhanVien'     => [
             'driver'   => 'jwt',
             'provider' => 'nhanVien'
-        ],
-
-        'PhaChe' => [
-            'driver'   => 'jwt',
-            'provider' => 'nhanVien'
-        ],
-
-        'PhucVu' => [
-            'driver'   => 'jwt',
-            'provider' => 'nhanVien'
-        ],
+        ]
     ],
 
     /*
@@ -90,11 +68,6 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
-
         'khachHang' => [
             'driver' => 'eloquent',
             'model'  => App\KhachHang::class,
@@ -105,53 +78,9 @@ return [
             'model'  => App\QuanTriVien::class,
         ],
 
-        // 'thuNgan' => [
-        //     'driver' => 'eloquent',
-        //     'model'  => App\NhanVien::class,
-        // ],
-
-        // 'kho' => [
-        //     'driver' => 'eloquent',
-        //     'model'  => App\NhanVien::class,
-        // ],
-
-        // 'phaChe' => [
-        //     'driver' => 'eloquent',
-        //     'model'  => App\NhanVien::class,
-        // ],
-
-        // 'phucVu' => [
-        //     'driver' => 'eloquent',
-        //     'model'  => App\NhanVien::class,
-        // ],
-
         'nhanVien' => [
             'driver'    => 'eloquent',
             'model'     => App\NhanVien::class,
         ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Resetting Passwords
-    |--------------------------------------------------------------------------
-    |
-    | You may specify multiple password reset configurations if you have more
-    | than one user table or model in the application and you want to have
-    | separate password reset settings based on the specific user types.
-    |
-    | The expire time is the number of minutes that the reset token should be
-    | considered valid. This security feature keeps tokens short-lived so
-    | they have less time to be guessed. You may change this as needed.
-    |
-    */
-
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-    ],
-
+    ]
 ];

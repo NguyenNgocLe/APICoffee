@@ -21,10 +21,15 @@ class ThemRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            //
+            'ten_loai' => 'bail|required|regex://'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'ten_loai.required' => 'Tên loại nhân viên không được trống!'
         ];
     }
 }

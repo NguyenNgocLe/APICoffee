@@ -59,14 +59,14 @@
  *                     property="ten_dang_nhap",
  *                     description="Tên đăng nhập quản trị viên",
  *                     type="string",
- *                     default="a",
+ *                     default="admin",
  *                 ),
  *                 @OA\Property(
  *                     property="mat_khau",
  *                     description="Mật khẩu",
  *                     type="string",
  *                     format="password",
- *                     default="a",
+ *                     default="admin",
  *                 ),
  *                 required={"ten_dang_nhap","mat_khau"}
  *             )

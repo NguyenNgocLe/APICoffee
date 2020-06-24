@@ -8,9 +8,19 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use App\ThucUong;
 use App\KhachHang;
 use App\NhanVien;
+use App\Http\Requests\ThucUong\DanhSachRequest;
 
 class ThucUongController extends Controller {
     public function layDanhSach(Request $req) {
+        $hopLe = new DanhSachRequest;
+        $thamDinh = Validator::make($req->all(), $hopLe->rules(), $hopLe->messages());
+        $thongBaoLoi = $thamDinh->messages()->first();
+        if($thamDinh->fails()) {
+            return response()->json([
+                'thongBao'  => $thongBaoLoi,
+                'maPhanHoi' => 406
+            ]);
+        }
         $gioiHan = 10;
         if (isset($req->gioiHan) && !empty($req->gioiHan)) {
             $gioiHan = $req->gioiHan;

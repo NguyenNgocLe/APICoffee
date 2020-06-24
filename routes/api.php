@@ -39,7 +39,7 @@ Route::group(['prefix' => 'khach-hang'], function () {
 });
 
 Route::group(['prefix' => 'loai-nhan-vien'], function () {
-    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|Shipper|PhaChe|PhucVu', 'jwt.auth', 'role:quanTriVien|quanTriVienToanQuyen'])->group(function() {
+    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|PhaChe|PhucVu', 'jwt.auth', 'role:quanTriVien|quanTriVienToanQuyen'])->group(function() {
         Route::post('them-moi', 'API\LoaiNhanVienController@themMoi');
     });
 });
@@ -50,7 +50,14 @@ Route::group(['prefix' => 'nhan-vien'], function () {
 });
 
 Route::group(['prefix' => 'thuc-uong'], function () {
-    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|Shipper|PhaChe|PhucVu', 'jwt.auth', 'role:khachHang|quanTriVien|quanTriVienToanQuyen|thuNgan|shipper|phaChe|phucVu'])->group(function() {
+    Route::middleware(['jwt.auth', 'role:quanTriVien'])->group(function() {
         Route::get('danh-sach', 'API\ThucUongController@layDanhSach');
+    });
+});
+
+Route::group(['prefix' => 'hoa-don-ban'], function() {
+    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|PhaChe|PhucVu', 'jwt.auth', 'role:quanTriVien|nhanVien|thuNgan'])->group(function() {
+        Route::post('them-moi', 'API\HoaDonBanController@themMoi');
+        Route::post('cap-nhat', 'API\HoaDonBanController@capNhat');
     });
 });

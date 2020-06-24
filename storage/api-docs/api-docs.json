@@ -7,6 +7,136 @@
     },
     "paths": {
         "/": {},
+        "/api/hoa-don-ban/them-moi": {
+            "post": {
+                "tags": [
+                    "HoaDonBan"
+                ],
+                "summary": "Thêm mới",
+                "operationId": "themMoi",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nhan_vien_id",
+                                    "khach_hang_id",
+                                    "tong_tien",
+                                    "diem"
+                                ],
+                                "properties": {
+                                    "nhan_vien_id": {
+                                        "description": "Id nhân viên",
+                                        "type": "int64"
+                                    },
+                                    "khach_hang_id": {
+                                        "description": "id khách hàng",
+                                        "type": "int64"
+                                    },
+                                    "tong_tien": {
+                                        "description": "Tổng tiền",
+                                        "type": "string",
+                                        "format": "double"
+                                    },
+                                    "diem": {
+                                        "description": "Điểm",
+                                        "type": "string",
+                                        "format": "int64"
+                                    },
+                                    "ghi_chu": {
+                                        "description": "Ghi chú",
+                                        "type": "string",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/hoa-don-ban/cap-nhat": {
+            "post": {
+                "tags": [
+                    "HoaDonBan"
+                ],
+                "summary": "Cập nhật",
+                "operationId": "capNhat",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nhan_vien_id",
+                                    "khach_hang_id",
+                                    "tong_tien",
+                                    "diem"
+                                ],
+                                "properties": {
+                                    "nhan_vien_id": {
+                                        "description": "Id nhân viên",
+                                        "type": "int64"
+                                    },
+                                    "khach_hang_id": {
+                                        "description": "id khách hàng",
+                                        "type": "int64"
+                                    },
+                                    "tong_tien": {
+                                        "description": "Tổng tiền",
+                                        "type": "string",
+                                        "format": "double"
+                                    },
+                                    "diem": {
+                                        "description": "Điểm",
+                                        "type": "string",
+                                        "format": "int64"
+                                    },
+                                    "ghi_chu": {
+                                        "description": "Ghi chú",
+                                        "type": "string",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/khach-hang/dang-ky": {
             "post": {
                 "tags": [
@@ -523,13 +653,13 @@
                                     "ten_dang_nhap": {
                                         "description": "Tên đăng nhập quản trị viên",
                                         "type": "string",
-                                        "default": "a"
+                                        "default": "admin"
                                     },
                                     "mat_khau": {
                                         "description": "Mật khẩu",
                                         "type": "string",
                                         "format": "password",
-                                        "default": "a"
+                                        "default": "admin"
                                     }
                                 },
                                 "type": "object"

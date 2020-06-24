@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ChiTietHoaDonBanSeeder::class,
             HoaDonNhapSeeder::class,
             ChiTietHoaDonNhapSeeder::class,
+            QuanTriVienSeeder::class,
         ]);
     }
 }

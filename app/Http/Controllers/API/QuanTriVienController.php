@@ -44,6 +44,7 @@ class QuanTriVienController extends Controller {
                                 'hoaDonBan',
                                 'chiTietHoaDonBan',
                                 'thucUong',
+                                'loaiThucUong',
                                 'nhanVien',
                                 'loaiNhanVien',
                                 'hoaDonNhap',
@@ -72,12 +73,10 @@ class QuanTriVienController extends Controller {
             'password'      => $req->mat_khau
         ];
         if($maXacThuc = auth('QuanTriVien')->attempt($thongTinDangNhap)) {
-            $thongTinQuanTriVien = QuanTriVien::find(auth('QuanTriVien')->user()->id);
-            $thongTinQuanTriVien['maXacThuc'] = $maXacThuc;
             return response()->json([
                 'thongBao'       => 'Đăng nhập thành công!',
                 'maPhanHoi'      => 200,
-                'duLieu'         => $thongTinQuanTriVien
+                'maXacThuc'      => $maXacThuc
             ]);
         }
         return response()->json([
