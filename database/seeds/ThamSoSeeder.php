@@ -13,12 +13,12 @@ class ThamSoSeeder extends Seeder
     public function run()
     {
         ThamSo::firstOrCreate([
-            'ten_tham_so' => 'PI',
+            'ten'         => 'PI',
             'gia_tri'     => 3.14
         ]);
 
         ThamSo::firstOrCreate([
-            'ten_tham_so' => 'HE_SO_TICH_LUY',
+            'ten'         => 'HE_SO_TICH_LUY',
             'gia_tri'     => 0.01
         ]);
     }

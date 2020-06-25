@@ -2,34 +2,32 @@
 
 namespace App;
 
-use Symfony\Component\HttpFoundation\Request;
-use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Traits\HasPermissions;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authentic;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class KhachHang extends Authentic implements JWTSubject
 {
-    use HasRoles, HasPermissions;
+    use SoftDeletes;
     protected $table = 'khach_hang';
-    protected $hidden = ['mat_khau', 'roles', 'permissions'];
-    protected $appends = [
-        'full_img'
-    ];
-    protected $fillable = [
-        'mat_khau'
-    ];
+    protected $hidden = ['mat_khau', 'otp', 'created_at', 'updated_at'];
+
+    public function LichSuDiem()
+    {
+        return $this->hasOne('App\LichSuDiem');
+    }
+
+    public function DanhSachHoaDonBan()
+    {
+        return $this->hasMany('App\HoaDonBan');
+    }
+
     public function getJWTIdentifier() {
         return $this->getKey();
     }
 
     public function getJWTCustomClaims() {
         return [];
-    }
-
-    public function LichSuDiem()
-    {
-        return $this->hasOne('App\LichSuDiem', 'khach_hang_id', 'id');
     }
 
     public function getPasswordAttribute() {

@@ -2,27 +2,17 @@
 
 namespace App;
 
-use Symfony\Component\HttpFoundation\Request;
-use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Traits\HasPermissions;
-use Illuminate\Foundation\Auth\User as Authentic;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LoaiNhanVien extends Authentic implements JWTSubject
+class LoaiNhanVien extends Model
 {
-    use HasRoles, HasPermissions;
-    protected $table = 'loai_nhan_vien';
-
-    public function NhanVien()
+    use SoftDeletes;
+    protected $table  = 'loai_nhan_vien';
+    protected $hidden = ['created_at', 'updated_at'];
+    
+    public function danhSachNhanVien()
     {
-        return $this->hasMany('App\NhanVien', 'loai_nhan_vien_id', 'id');
-    }
-
-    public function getJWTIdentifier() {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims() {
-        return [];
+        return $this->hasMany('App\NhanVien');
     }
 }

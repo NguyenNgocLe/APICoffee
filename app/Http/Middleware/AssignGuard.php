@@ -15,12 +15,8 @@ class AssignGuard
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($guard != null) {
-            $guards = explode('|', $guard);
-            foreach ($guards as $item) {
-                if(auth()->guard($item)->check())
-                    auth()->shouldUse($item);
-            }
+        if($guard != null) {
+            auth()->shouldUse($guard);
         }
         return $next($request);
     }

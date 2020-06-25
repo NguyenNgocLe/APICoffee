@@ -15,126 +15,111 @@ class ThucUongSeeder extends Seeder
     {
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'Americano',
+            'ten'               => 'Americano',
             'hinh_anh'          => 'americano.jpg',
             'don_gia'           => 39.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'café espresso',
+            'ten'               => 'café espresso',
             'hinh_anh'          => 'espresso.jpg',
             'don_gia'           => 35.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'Espresso với sữa',
+            'ten'               => 'Espresso với sữa',
             'hinh_anh'          => 'espresso_voi_sua.jpg',
             'don_gia'           => 39.000,
-            'xoa'               => 0,
             'ghi_chu'           => 'Sản phẩm còn ít nguyên liệu cafe'
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'COLD BREW truyền thống',
+            'ten'               => 'COLD BREW truyền thống',
             'hinh_anh'          => 'coldbrew.jpg',
             'don_gia'           => 35.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'MOCHA',
+            'ten'               => 'MOCHA',
             'hinh_anh'          => 'mocha.jpg',
             'don_gia'           => 33.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'Bạc sỉu',
+            'ten'               => 'Bạc sỉu',
             'hinh_anh'          => 'bacsiu.jpg',
             'don_gia'           => 35.000,
-            'xoa'               => 0,
             'ghi_chu'           => 'Sản phẩm có ít nguyên liệu',
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'Cappuchino',
+            'ten'               => 'Cappuchino',
             'hinh_anh'          => 'cappuchino.jpg',
             'don_gia'           => 47.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'LATTE',
+            'ten'               => 'LATTE',
             'hinh_anh'          => 'latte.jpg',
             'don_gia'           => 45.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'Milano',
+            'ten'               => 'Milano',
             'hinh_anh'          => 'milano.jpg',
             'don_gia'           => 55.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'Cafe sữa',
+            'ten'               => 'Cafe sữa',
             'hinh_anh'          => 'cafesua.jpg',
             'don_gia'           => 29.000,
-            'xoa'               => 0,
             'ghi_chu'           => 'Sản phẩm còn ít nguyên liệu đường',
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'COCONUT LATTE',
+            'ten'               => 'COCONUT LATTE',
             'hinh_anh'          => 'Coconutlatte.jpg',
             'don_gia'           => 38.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'ALMOND LATTE',
+            'ten'               => 'ALMOND LATTE',
             'hinh_anh'          => 'Almondlatte.jpg',
             'don_gia'           => 45.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'ALMOND LATTE',
+            'ten'               => 'ALMOND LATTE',
             'hinh_anh'          => 'Almondlatte.jpg',
             'don_gia'           => 45.000,
-            'xoa'               => 0,
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'Cafe nóng',
+            'ten'               => 'Cafe nóng',
             'hinh_anh'          => 'Almondlatte.jpg',
             'don_gia'           => 12.000,
-            'xoa'               => 1,
             'ghi_chu'           => 'Sản phẩm này rẽ quá bán không lời!',
         ]);
 
         ThucUong::firstOrCreate([
             'loai_thuc_uong_id' => 1,
-            'ten_thuc_uong'     => 'CARAMEL MACCHIATO',
+            'ten'               => 'CARAMEL MACCHIATO',
             'hinh_anh'          => 'caramelmacchiato.jpg',
             'don_gia'           => 55.000,
-            'xoa'               => 1,
             'ghi_chu'           => 'Sản phẩm này mắc, khách ít dùng!',
         ]);
     }

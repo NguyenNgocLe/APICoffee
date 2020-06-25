@@ -14,10 +14,14 @@ class HoaDonBan extends Migration
             $table->unsignedInteger('nhan_vien_id')->nullable();
             $table->unsignedInteger('khach_hang_id')->nullable();
             $table->date('ngay_ban')->nullable();
-            $table->double('tong_tien')->nullable();
-            $table->integer('diem')->nullable();
+            $table->unsignedInteger('tong_tien')->nullable();
+            $table->unsignedInteger('diem')->nullable();
+            $table->string('trang_thai')->nullable();
             $table->string('ghi_chu')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreign('nhan_vien_id')->references('id')->on('nhan_vien');
+            $table->foreign('khach_hang_id')->references('id')->on('khach_hang');
         });
     }
 

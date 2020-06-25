@@ -2,27 +2,29 @@
 
 namespace App;
 
-use Symfony\Component\HttpFoundation\Request;
-use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Traits\HasPermissions;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authentic;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class NhanVien extends Authentic implements JWTSubject
 {
-    use HasRoles, HasPermissions;
+    use SoftDeletes;
     protected $table = 'nhan_vien';
-    protected $appends = ['role_name'];
-    protected $hidden = ['mat_khau', 'roles', 'permissions'];
+    protected $hidden = ['mat_khau', 'otp', 'created_at', 'updated_at'];
 
     public function LoaiNhanVien()
     {
-        return $this->belongsTo('App\LoaiNhanVien', 'loai_nhan_vien_id', 'id');
+        return $this->belongsTo('App\LoaiNhanVien');
     }
 
-    public function HoaDon()
+    public function DanhSachHoaDonNhap()
     {
-        return $this->hasMany('App\HoaDon', 'nhan_vien_id', 'id');
+        return $this->hasMany('App\HoaDonNhap');
+    }
+
+    public function DanhSachHoaDonBan()
+    {
+        return $this->hasMany('App\HoaDonBan');
     }
 
     public function getJWTIdentifier() {
@@ -31,13 +33,6 @@ class NhanVien extends Authentic implements JWTSubject
 
     public function getJWTCustomClaims() {
         return [];
-    }
-
-    public function getRoleNameAttribute() {
-        if (empty($this->roles[0]->name)) {
-            return null;
-        }
-        return $this->roles[0]->name;
     }
 
     public function getPasswordAttribute() {

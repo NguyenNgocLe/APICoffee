@@ -6,14 +6,14 @@ use Illuminate\Database\Migrations\Migration;
 
 class ThamSo extends Migration
 {
-
     public function up()
     {
         Schema::create('tham_so', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ten_tham_so')->nullable();
+            $table->string('ten')->nullable();
             $table->double('gia_tri')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

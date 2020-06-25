@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            Roles::class,
             ThamSoSeeder::class,
             NguyenLieuSeeder::class,
             LoaiThucUongSeeder::class,
@@ -25,7 +24,6 @@ class DatabaseSeeder extends Seeder
             ChiTietHoaDonBanSeeder::class,
             HoaDonNhapSeeder::class,
             ChiTietHoaDonNhapSeeder::class,
-            QuanTriVienSeeder::class,
         ]);
     }
 }

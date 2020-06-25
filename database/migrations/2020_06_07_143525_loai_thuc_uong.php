@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LoaiNhanVien extends Migration
+class LoaiThucUong extends Migration
 {
 
     public function up()
     {
-        Schema::create('loai_nhan_vien', function (Blueprint $table) {
+        Schema::create('loai_thuc_uong', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ten')->nullable();
             $table->string('ghi_chu')->nullable();
@@ -20,6 +20,6 @@ class LoaiNhanVien extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('loai_nhan_vien');
+        Schema::dropIfExists('loai_thuc_uong');
     }
 }
