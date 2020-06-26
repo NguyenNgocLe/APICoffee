@@ -13,37 +13,50 @@ class LoaiNhanVienSeeder extends Seeder
     public function run()
     {
         LoaiNhanVien::firstOrCreate([
-            'ten'      => 'Quản trị viên',
+            'ten_loai' => 'Quản trị viên',
+            'xoa'      => 0,
             'ghi_chu'  => 'Quản trị quán coffee'
         ]);
 
         LoaiNhanVien::firstOrCreate([
-            'ten'      => 'Nhân viên thu ngân',
+            'ten_loai' => 'Nhân viên thu ngân',
+            'xoa'      => 0,
             'ghi_chu'  => 'Nhân viên đứng tại quầy tính tiền'
         ]);
 
         LoaiNhanVien::firstOrCreate([
-            'ten'      => 'Nhân viên pha chế',
+            'ten_loai' => 'Nhân viên pha chế',
+            'xoa'      => 0,
             'ghi_chu'  => 'Nhân viên chế biến thức uống'
         ]);
 
         LoaiNhanVien::firstOrCreate([
-            'ten'      => 'Nhân viên phục vụ',
+            'ten_loai' => 'Nhân viên phục vụ',
+            'xoa'      => 0,
             'ghi_chu'  => ''
         ]);
 
         LoaiNhanVien::firstOrCreate([
-            'ten'      => 'Nhân viên kho',
+            'ten_loai' => 'Nhân viên kho',
+            'xoa'      => 0,
             'ghi_chu'  => 'Nhân viên nhập nguyên liệu'
         ]);
 
         LoaiNhanVien::firstOrCreate([
-            'ten'      => 'Bảo vệ',
+            'ten_loai' => 'Shipper',
+            'xoa'      => 0,
+            'ghi_chu'  => 'Nhân viên vận chuyển thức uống'
+        ]);
+
+        LoaiNhanVien::firstOrCreate([
+            'ten_loai' => 'Bảo vệ',
+            'xoa'      => 1,
             'ghi_chu'  => 'Không có tiền mướn bảo vệ!'
         ]);
 
         LoaiNhanVien::firstOrCreate([
-            'ten'      => 'Nhân viên kỹ thuật',
+            'ten_loai' => 'Nhân viên kỹ thuật',
+            'xoa'      => 1,
             'ghi_chu'  => 'Không có tiền mướn nhân viên kỹ thuật!'
         ]);
     }

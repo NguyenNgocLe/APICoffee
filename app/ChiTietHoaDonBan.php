@@ -3,16 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChiTietHoaDonBan extends Model
 {
-    use SoftDeletes;
     protected $table = 'chi_tiet_hoa_don_ban';
-    protected $hidden = ['created_at', 'updated_at'];
 
     public function HoaDonBan()
     {
-        return $this->belongsTo('App\HoaDonBan');
+        return $this->belongsTo('App\HoaDonBan', 'hoa_don_ban_id', 'id');
+    }
+
+    public function ThucUong()
+    {
+        return $this->hasMany('App\ThucUong', 'thuc_uong_id', 'id');
     }
 }

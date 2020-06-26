@@ -12,13 +12,12 @@ class ThucUong extends Migration
         Schema::create('thuc_uong', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('loai_thuc_uong_id')->nullable();
-            $table->string('ten')->nullable();
+            $table->string('ten_thuc_uong')->nullable();
             $table->string('hinh_anh')->nullable();
-            $table->unsignedInteger('don_gia')->nullable();
+            $table->double('don_gia')->nullable();
             $table->string('ghi_chu')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('loai_thuc_uong_id')->references('id')->on('loai_thuc_uong');
         });
     }
 

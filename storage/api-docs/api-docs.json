@@ -1,0 +1,931 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "The Coffee API",
+        "description": "The Coffee API",
+        "version": "3.x"
+    },
+    "paths": {
+        "/": {},
+        "/api/hoa-don-ban/them-moi": {
+            "post": {
+                "tags": [
+                    "HoaDonBan"
+                ],
+                "summary": "Thêm mới",
+                "operationId": "themMoi",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nhan_vien_id",
+                                    "khach_hang_id",
+                                    "tong_tien",
+                                    "diem"
+                                ],
+                                "properties": {
+                                    "nhan_vien_id": {
+                                        "description": "Id nhân viên",
+                                        "type": "int64"
+                                    },
+                                    "khach_hang_id": {
+                                        "description": "id khách hàng",
+                                        "type": "int64"
+                                    },
+                                    "tong_tien": {
+                                        "description": "Tổng tiền",
+                                        "type": "string",
+                                        "format": "double"
+                                    },
+                                    "diem": {
+                                        "description": "Điểm",
+                                        "type": "string",
+                                        "format": "int64"
+                                    },
+                                    "ghi_chu": {
+                                        "description": "Ghi chú",
+                                        "type": "string",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/hoa-don-ban/cap-nhat": {
+            "post": {
+                "tags": [
+                    "HoaDonBan"
+                ],
+                "summary": "Cập nhật",
+                "operationId": "capNhat",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nhan_vien_id",
+                                    "khach_hang_id",
+                                    "tong_tien",
+                                    "diem"
+                                ],
+                                "properties": {
+                                    "nhan_vien_id": {
+                                        "description": "Id nhân viên",
+                                        "type": "int64"
+                                    },
+                                    "khach_hang_id": {
+                                        "description": "id khách hàng",
+                                        "type": "int64"
+                                    },
+                                    "tong_tien": {
+                                        "description": "Tổng tiền",
+                                        "type": "string",
+                                        "format": "double"
+                                    },
+                                    "diem": {
+                                        "description": "Điểm",
+                                        "type": "string",
+                                        "format": "int64"
+                                    },
+                                    "ghi_chu": {
+                                        "description": "Ghi chú",
+                                        "type": "string",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/khach-hang/dang-ky": {
+            "post": {
+                "tags": [
+                    "KhachHang"
+                ],
+                "summary": "Đăng ký",
+                "operationId": "dangKy",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "ten_dang_nhap",
+                                    "mat_khau"
+                                ],
+                                "properties": {
+                                    "ten_dang_nhap": {
+                                        "description": "Tên đăng nhập khách hàng",
+                                        "type": "string"
+                                    },
+                                    "mat_khau": {
+                                        "description": "Mật khẩu",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/khach-hang/dang-nhap": {
+            "post": {
+                "tags": [
+                    "KhachHang"
+                ],
+                "summary": "Đăng nhập",
+                "operationId": "dangNhap",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "ten_dang_nhap",
+                                    "mat_khau"
+                                ],
+                                "properties": {
+                                    "ten_dang_nhap": {
+                                        "description": "Tên đăng nhập khách hàng",
+                                        "type": "string"
+                                    },
+                                    "mat_khau": {
+                                        "description": "Mật khẩu",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/khach-hang/dang-xuat": {
+            "post": {
+                "tags": [
+                    "KhachHang"
+                ],
+                "summary": "Đăng xuất",
+                "operationId": "dangXuat",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/khach-hang/lam-moi-ma-xac-thuc": {
+            "post": {
+                "tags": [
+                    "KhachHang"
+                ],
+                "summary": "Làm mới mã xác thực",
+                "operationId": "lamMoiMaXacThuc",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/khach-hang/cap-nhat/{id}": {
+            "post": {
+                "tags": [
+                    "KhachHang"
+                ],
+                "summary": "Cập nhật thông tin khách hàng",
+                "operationId": "capNhat",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID của khách hàng",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "ho_ten": {
+                                        "description": "Họ và tên khách hàng",
+                                        "type": "string"
+                                    },
+                                    "gioi_tinh": {
+                                        "description": "Giới tính khách hàng",
+                                        "type": "string"
+                                    },
+                                    "ngay_sinh": {
+                                        "description": "Ngày sinh khách hàng (yyyy-mm-dd)",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "email": {
+                                        "description": "Email khách hàng",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "so_dien_thoai": {
+                                        "description": "Số điện thoại khách hàng",
+                                        "type": "string"
+                                    },
+                                    "dia_chi": {
+                                        "description": "Địa chỉ khách hàng",
+                                        "type": "string"
+                                    },
+                                    "anh_dai_dien": {
+                                        "description": "Ảnh đại diện của khách hàng",
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/khach-hang/doi-mat-khau": {
+            "post": {
+                "tags": [
+                    "KhachHang"
+                ],
+                "summary": "Đổi mật khẩu khách hàng",
+                "operationId": "doiMatKhau",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "mat_khau_cu",
+                                    "mat_khau_moi",
+                                    "nhap_lai_mat_khau_moi"
+                                ],
+                                "properties": {
+                                    "mat_khau_cu": {
+                                        "description": "Nhập mật khẩu cũ",
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "mat_khau_moi": {
+                                        "description": "Nhập mật khẩu mới",
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "nhap_lai_mat_khau_moi": {
+                                        "description": "Nhập lại mật khẩu mới",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/loai-nhan-vien/them-moi": {
+            "post": {
+                "tags": [
+                    "LoaiNhanVien"
+                ],
+                "summary": "Thêm mới loại nhân viên",
+                "operationId": "themMoi",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "ten_loai"
+                                ],
+                                "properties": {
+                                    "ten_loai": {
+                                        "description": "Tên loại nhân viên",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/nhan-vien/dang-ky/{id}": {
+            "post": {
+                "tags": [
+                    "NhanVien"
+                ],
+                "summary": "Đăng ký",
+                "operationId": "dangKy",
+                "parameters": [
+                    {
+                        "name": "kieu_nv",
+                        "in": "query",
+                        "description": "Tên loại nhân viên",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "thuNgan",
+                                    "kho",
+                                    "phaChe",
+                                    "phucVu"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "ten_dang_nhap",
+                                    "mat_khau",
+                                    "loai_nhan_vien_id"
+                                ],
+                                "properties": {
+                                    "loai_nhan_vien_id": {
+                                        "description": "Loại nhân viên id",
+                                        "type": "string"
+                                    },
+                                    "ten_dang_nhap": {
+                                        "description": "Tên đăng nhập nhân viên",
+                                        "type": "string"
+                                    },
+                                    "mat_khau": {
+                                        "description": "Mật khẩu",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/nhan-vien/dang-nhap": {
+            "post": {
+                "tags": [
+                    "NhanVien"
+                ],
+                "summary": "Đăng nhập",
+                "operationId": "dangNhap",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "ten_dang_nhap",
+                                    "mat_khau"
+                                ],
+                                "properties": {
+                                    "ten_dang_nhap": {
+                                        "description": "Tên đăng nhập nhân viên",
+                                        "type": "string"
+                                    },
+                                    "mat_khau": {
+                                        "description": "Mật khẩu",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quan-tri-vien/dang-ky": {
+            "post": {
+                "tags": [
+                    "QuanTriVien"
+                ],
+                "summary": "Đăng ký",
+                "operationId": "dangKy",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "ten_dang_nhap",
+                                    "mat_khau"
+                                ],
+                                "properties": {
+                                    "ten_dang_nhap": {
+                                        "description": "Tên đăng nhập quản trị viên",
+                                        "type": "string"
+                                    },
+                                    "mat_khau": {
+                                        "description": "Mật khẩu",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quan-tri-vien/dang-nhap": {
+            "post": {
+                "tags": [
+                    "QuanTriVien"
+                ],
+                "summary": "Đăng nhập",
+                "operationId": "dangNhap",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "ten_dang_nhap",
+                                    "mat_khau"
+                                ],
+                                "properties": {
+                                    "ten_dang_nhap": {
+                                        "description": "Tên đăng nhập quản trị viên",
+                                        "type": "string",
+                                        "default": "admin"
+                                    },
+                                    "mat_khau": {
+                                        "description": "Mật khẩu",
+                                        "type": "string",
+                                        "format": "password",
+                                        "default": "admin"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quan-tri-vien/dang-xuat": {
+            "post": {
+                "tags": [
+                    "QuanTriVien"
+                ],
+                "summary": "Đăng xuất",
+                "operationId": "dangXuat",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quan-tri-vien/lam-moi-ma-xac-thuc": {
+            "post": {
+                "tags": [
+                    "QuanTriVien"
+                ],
+                "summary": "Làm mới mã xác thực",
+                "operationId": "lamMoiMaXacThuc",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quan-tri-vien/cap-nhat/{id}": {
+            "post": {
+                "tags": [
+                    "QuanTriVien"
+                ],
+                "summary": "Cập nhật thông tin quản trị viên",
+                "operationId": "capNhat",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID của quản trị viên",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "ho_ten": {
+                                        "description": "Họ và tên quản trị viên",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quan-tri-vien/doi-mat-khau": {
+            "post": {
+                "tags": [
+                    "QuanTriVien"
+                ],
+                "summary": "Đổi mật khẩu quản trị viên",
+                "operationId": "doiMatKhau",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "mat_khau_cu",
+                                    "mat_khau_moi",
+                                    "nhap_lai_mat_khau_moi"
+                                ],
+                                "properties": {
+                                    "mat_khau_cu": {
+                                        "description": "Nhập mật khẩu cũ",
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "mat_khau_moi": {
+                                        "description": "Nhập mật khẩu mới",
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "nhap_lai_mat_khau_moi": {
+                                        "description": "Nhập lại mật khẩu mới",
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/thuc-uong/danh-sach": {
+            "get": {
+                "tags": [
+                    "ThucUong"
+                ],
+                "summary": "Lấy danh sách thức uống",
+                "operationId": "layDanhSach",
+                "parameters": [
+                    {
+                        "name": "gioiHan",
+                        "in": "query",
+                        "description": "Số lượng thức uống trên 1 trang",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "trang",
+                        "in": "query",
+                        "description": "Số trang",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Lọc thức uống (loai_thuc_uong_id | ten_thuc_uong | don_gia)",
+                        "content": {
+                            "application/json": {
+                                "mediaType": "application/json",
+                                "schema": {
+                                    "properties": {
+                                        "loai_thuc_uong_id": {
+                                            "type": "integer",
+                                            "format": "int64"
+                                        },
+                                        "ten_thuc_uong": {
+                                            "type": "string"
+                                        },
+                                        "don_gia": {
+                                            "type": "integer",
+                                            "format": "int64"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error server"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

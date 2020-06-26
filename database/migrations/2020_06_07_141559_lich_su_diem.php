@@ -13,7 +13,7 @@ class LichSuDiem extends Migration
             $table->increments('id');
             $table->unsignedInteger('khach_hang_id')->nullable();
             $table->date('ngay')->nullable();
-            $table->unsignedInteger('diem')->nullable();
+            $table->integer('so_diem')->nullable();
             $table->string('ghi_chu')->nullable();
             $table->timestamps();
             $table->softDeletes();

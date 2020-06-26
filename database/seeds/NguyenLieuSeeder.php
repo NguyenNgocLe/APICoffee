@@ -13,90 +13,101 @@ class NguyenLieuSeeder extends Seeder
     public function run()
     {
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Cafe đen',
+            'ten_nguyen_lieu' => 'Cafe đen',
+            'don_gia'         => 80000,
             'don_vi_tinh'     => 'Bịt',
             'so_luong_ton'    => 1,
-            'don_gia'         => 80000,
+            'xoa'             => 0,
             'ghi_chu'         => 'Cafe xịn lắm',
         ]);
 
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Cafe bột',
+            'ten_nguyen_lieu' => 'Cafe bột',
+            'don_gia'         => 110000,
             'don_vi_tinh'     => 'Bịt',
             'so_luong_ton'    => 3,
-            'don_gia'         => 110000,
+            'xoa'             => 0,
             'ghi_chu'         => 'Cafe vina bột',
         ]);
 
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Đường',
+            'ten_nguyen_lieu' => 'Đường',
             'don_gia'         => 20000,
             'don_vi_tinh'     => 'Kg',
             'so_luong_ton'    => 0,
+            'xoa'             => 0,
             'ghi_chu'         => 'Đường bao ngọt',
         ]);
 
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Đá',
+            'ten_nguyen_lieu' => 'Đá',
+            'don_gia'         => 1000,
             'don_vi_tinh'     => 'Kg',
             'so_luong_ton'    => 0,
-            'don_gia'         => 1000,
+            'xoa'             => 0,
             'ghi_chu'         => 'Đá mi',
         ]);
 
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Sữa đặc có đường',
+            'ten_nguyen_lieu' => 'Sữa đặc có đường',
+            'don_gia'         => 18000,
             'don_vi_tinh'     => 'Lon',
             'so_luong_ton'    => 1,
-            'don_gia'         => 18000,
+            'xoa'             => 0,
             'ghi_chu'         => 'Sữa ông Thọ',
         ]);
 
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Sữa tươi không đường',
+            'ten_nguyen_lieu' => 'Sữa tươi không đường',
+            'don_gia'         => 16000,
             'don_vi_tinh'     => 'Bịt',
             'so_luong_ton'    => 3,
-            'don_gia'         => 16000,
+            'xoa'             => 0,
             'ghi_chu'         => 'Sữa tươi vinamilk',
         ]);
 
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Vani',
+            'ten_nguyen_lieu' => 'Vani',
+            'don_gia'         => 7000,
             'don_vi_tinh'     => 'Ống',
             'so_luong_ton'    => 2,
-            'don_gia'         => 7000,
-            'ghi_chu'         => 'Mặt hàng này đã không c™òn kinh doanh!',
-        ]);
-
-        NguyenLieu::firstOrCreate([
-            'ten'             => 'Bột Onemix',
-            'don_vi_tinh'     => 'Kg',
-            'so_luong_ton'    => 0,
-            'don_gia'         => 140000,
-            'ghi_chu'         => 'Bột Mix Smoothie không hương',
-        ]);
-
-        NguyenLieu::firstOrCreate([
-            'ten'             => 'Bột Cacao',
-            'don_vi_tinh'     => 'Kg',
-            'so_luong_ton'    => 5,
-            'don_gia'         => 40000,
-            'ghi_chu'         => 'Bột Cacao nguyên chất',
-        ]);
-
-        NguyenLieu::firstOrCreate([
-            'ten'             => 'Bột Socola',
-            'don_vi_tinh'     => 'Kg',
-            'so_luong_ton'    => 1,
-            'don_gia'         => 98000,
+            'xoa'             => 1,
             'ghi_chu'         => 'Mặt hàng này đã không còn kinh doanh!',
         ]);
 
         NguyenLieu::firstOrCreate([
-            'ten'             => 'Sốt Caramel',
+            'ten_nguyen_lieu' => 'Bột Onemix',
+            'don_gia'         => 140000,
+            'don_vi_tinh'     => 'Kg',
+            'so_luong_ton'    => 0,
+            'xoa'             => 0,
+            'ghi_chu'         => 'Bột Mix Smoothie không hương',
+        ]);
+
+        NguyenLieu::firstOrCreate([
+            'ten_nguyen_lieu' => 'Bột Cacao',
+            'don_gia'         => 40000,
+            'don_vi_tinh'     => 'Kg',
+            'so_luong_ton'    => 5,
+            'xoa'             => 0,
+            'ghi_chu'         => 'Bột Cacao nguyên chất',
+        ]);
+
+        NguyenLieu::firstOrCreate([
+            'ten_nguyen_lieu' => 'Bột Socola',
+            'don_gia'         => 98000,
+            'don_vi_tinh'     => 'Kg',
+            'so_luong_ton'    => 1,
+            'xoa'             => 1,
+            'ghi_chu'         => 'Mặt hàng này đã không còn kinh doanh!',
+        ]);
+
+        NguyenLieu::firstOrCreate([
+            'ten_nguyen_lieu' => 'Sốt Caramel',
             'don_gia'         => 59000,
             'don_vi_tinh'     => 'Kg',
             'so_luong_ton'    => 0,
+            'xoa'             => 0,
             'ghi_chu'         => 'Sốt Caramel',
         ]);
     }
