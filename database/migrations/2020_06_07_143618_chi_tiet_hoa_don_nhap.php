@@ -13,10 +13,12 @@ class ChiTietHoaDonNhap extends Migration
             $table->increments('id');
             $table->unsignedInteger('hoa_don_nhap_id')->nullable();
             $table->unsignedInteger('nguyen_lieu_id')->nullable();
-            $table->integer('so_luong')->nullable();
-            $table->double('gia')->nullable();
+            $table->unsignedInteger('so_luong')->nullable();
+            $table->unsignedInteger('gia')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('hoa_don_nhap_id')->references('id')->on('hoa_don_nhap');
+            $table->foreign('nguyen_lieu_id')->references('id')->on('nguyen_lieu');
         });
     }
 

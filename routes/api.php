@@ -2,62 +2,105 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-Route::group(['prefix' => 'quan-tri-vien'], function () {
-    Route::post('dang-ky', 'API\QuanTriVienController@dangKy');
-    Route::post('dang-nhap', 'API\QuanTriVienController@dangNhap');
-    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|Shipper|PhaChe|PhucVu', 'jwt.auth', 'role:quanTriVien'])->group(function() {
-        Route::post('dang-xuat', 'API\QuanTriVienController@dangXuat');
-        Route::post('lam-moi-ma-xac-thuc', 'API\QuanTriVienController@lamMoiMaXacThuc');
-        Route::post('doi-mat-khau', 'API\QuanTriVienController@doiMatKhau');
-        Route::post('cap-nhat/{id}', 'API\QuanTriVienController@capNhat');
+Route::prefix('/nhan-vien')->group(function () {
+    Route::middleware('assign.guard:nhan_vien')->group(function() {
+        Route::post('/dang-nhap', 'API\NhanVienController@login');
+        Route::post('/quen-mat-khau', 'API\NhanVienController@forgetPassword');
+        Route::post('/dat-lai-mat-khau/{id}', 'API\NhanVienController@resetPassword');
+        Route::middleware('jwt.auth')->group(function() {
+            Route::post('/dang-xuat', 'API\NhanVienController@logout');
+            Route::get('/', 'API\NhanVienController@index');
+            Route::post('/', 'API\NhanVienController@store');
+            Route::get('/{id}', 'API\NhanVienController@show');
+            Route::post('/{id}', 'API\NhanVienController@update');
+            Route::delete('/', 'API\NhanVienController@destroy');
+        });
     });
 });
 
-Route::group(['prefix' => 'khach-hang'], function () {
-    Route::post('dang-ky', 'API\KhachHangController@dangKy');
-    Route::post('dang-nhap', 'API\KhachHangController@dangNhap');
-    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|Shipper|PhaChe|PhucVu', 'jwt.auth', 'role:khachHang'])->group(function() {
-        Route::post('dang-xuat', 'API\KhachHangController@dangXuat');
-        Route::post('lam-moi-ma-xac-thuc', 'API\KhachHangController@lamMoiMaXacThuc');
-        Route::post('doi-mat-khau', 'API\KhachHangController@doiMatKhau');
-    });
-
-    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|Shipper|PhaChe|PhucVu', 'jwt.auth', 'role:khachHang|quanTriVien|quanTriVienToanQuyen'])->group(function() {
-        Route::post('danh-sach-thuc-uong', 'API\KhachHangController@dangXuat');
-        Route::post('cap-nhat/{id}', 'API\KhachHangController@capNhat');
-    });
-});
-
-Route::group(['prefix' => 'loai-nhan-vien'], function () {
-    Route::middleware('jwt.auth')->group(function() {
-        Route::post('them-moi', 'API\LoaiNhanVienController@themMoi');
+Route::prefix('/khach-hang')->group(function () {
+    Route::middleware('assign.guard:khach_hang')->group(function() {
+        Route::post('/dang-nhap', 'API\KhachHangController@login');
+        Route::middleware('jwt.auth')->group(function() {
+            Route::post('/dang-xuat', 'API\KhachHangController@logout');
+            Route::get('/', 'API\KhachHangController@index');
+            Route::post('/', 'API\KhachHangController@store');
+            Route::get('/{id}', 'API\KhachHangController@show');
+            Route::post('/{id}', 'API\KhachHangController@update');
+            Route::delete('/', 'API\KhachHangController@destroy');
+        });
     });
 });
 
-Route::group(['prefix' => 'nhan-vien'], function () {
-    Route::post('dang-ky/{id}', 'API\NhanVienController@dangKy');
-    Route::post('dang-nhap', 'API\NhanVienController@dangNhap');
-});
-
-Route::group(['prefix' => 'thuc-uong'], function () {
-    Route::middleware(['jwt.auth'])->group(function() {
-        Route::get('danh-sach', 'API\ThucUongController@layDanhSach');
+Route::middleware('assign.guard:khach_hang|nhan_vien', 'jwt.auth')->group(function() {
+    Route::prefix('/tham-so')->group(function () {
+        Route::get('/', 'API\ThamSoController@index');
+        Route::post('/', 'API\ThamSoController@store');
+        Route::get('/{id}', 'API\ThamSoController@show');
+        Route::post('/{id}', 'API\ThamSoController@update');
+        Route::delete('/', 'API\ThamSoController@destroy');
     });
-});
-
-Route::group(['prefix' => 'hoa-don-ban'], function() {
-    Route::middleware(['assign.guard:QuanTriVien|KhachHang|ThuNgan|Kho|PhaChe|PhucVu', 'jwt.auth', 'role:quanTriVien|nhanVien|thuNgan'])->group(function() {
-        Route::post('them-moi', 'API\HoaDonBanController@themMoi');
-        Route::post('cap-nhat', 'API\HoaDonBanController@capNhat');
+    Route::prefix('/loai-nhan-vien')->group(function () {
+        Route::get('/', 'API\LoaiNhanVienController@index');
+        Route::post('/', 'API\LoaiNhanVienController@store');
+        Route::get('/{id}', 'API\LoaiNhanVienController@show');
+        Route::post('/{id}', 'API\LoaiNhanVienController@update');
+        Route::delete('/', 'API\LoaiNhanVienController@destroy');
+    });
+    Route::prefix('/loai-thuc-uong')->group(function () {
+        Route::get('/', 'API\LoaiThucUongController@index');
+        Route::post('/', 'API\LoaiThucUongController@store');
+        Route::get('/{id}', 'API\LoaiThucUongController@show');
+        Route::post('/{id}', 'API\LoaiThucUongController@update');
+        Route::delete('/', 'API\LoaiThucUongController@destroy');
+    });
+    Route::prefix('/lich-su-diem')->group(function () {
+        Route::get('/', 'API\LichSuDiemController@index');
+        Route::post('/', 'API\LichSuDiemController@store');
+        Route::get('/{id}', 'API\LichSuDiemController@show');
+        Route::post('/{id}', 'API\LichSuDiemController@update');
+        Route::delete('/', 'API\LichSuDiemController@destroy');
+    });
+    Route::prefix('/nguyen-lieu')->group(function () {
+        Route::get('/', 'API\NguyenLieuController@index');
+        Route::post('/', 'API\NguyenLieuController@store');
+        Route::get('/{id}', 'API\NguyenLieuController@show');
+        Route::post('/{id}', 'API\NguyenLieuController@update');
+        Route::delete('/', 'API\NguyenLieuController@destroy');
+    });
+    Route::prefix('/thuc-uong')->group(function () {
+        Route::get('/', 'API\ThucUongController@index');
+        Route::post('/', 'API\ThucUongController@store');
+        Route::get('/{id}', 'API\ThucUongController@show');
+        Route::post('/{id}', 'API\ThucUongController@update');
+        Route::delete('/', 'API\ThucUongController@destroy');
+    });
+    Route::prefix('/hoa-don-nhap')->group(function () {
+        Route::get('/', 'API\HoaDonNhapController@index');
+        Route::post('/', 'API\HoaDonNhapController@store');
+        Route::get('/{id}', 'API\HoaDonNhapController@show');
+        Route::post('/{id}', 'API\HoaDonNhapController@update');
+        Route::delete('/', 'API\HoaDonNhapController@destroy');
+    });
+    Route::prefix('/hoa-don-ban')->group(function () {
+        Route::get('/', 'API\HoaDonBanController@index');
+        Route::post('/', 'API\HoaDonBanController@store');
+        Route::get('/{id}', 'API\HoaDonBanController@show');
+        Route::post('/{id}', 'API\HoaDonBanController@update');
+        Route::delete('/', 'API\HoaDonBanController@destroy');
+    });
+    Route::prefix('/chi-tiet-hoa-don-nhap')->group(function () {
+        Route::get('/', 'API\ChiTietHoaDonNhapController@index');
+        Route::post('/', 'API\ChiTietHoaDonNhapController@store');
+        Route::get('/{id}', 'API\ChiTietHoaDonNhapController@show');
+        Route::post('/{id}', 'API\ChiTietHoaDonNhapController@update');
+        Route::delete('/', 'API\ChiTietHoaDonNhapController@destroy');
+    });
+    Route::prefix('/chi-tiet-hoa-don-ban')->group(function () {
+        Route::get('/', 'API\ChiTietHoaDonBanController@index');
+        Route::post('/', 'API\ChiTietHoaDonBanController@store');
+        Route::get('/{id}', 'API\ChiTietHoaDonBanController@show');
+        Route::post('/{id}', 'API\ChiTietHoaDonBanController@update');
+        Route::delete('/', 'API\ChiTietHoaDonBanController@destroy');
     });
 });

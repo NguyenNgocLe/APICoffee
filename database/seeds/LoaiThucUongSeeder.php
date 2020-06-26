@@ -13,24 +13,20 @@ class LoaiThucUongSeeder extends Seeder
     public function run()
     {
         LoaiThucUong::firstOrCreate([
-            'ten_loai_thuc_uong' => 'Coffee',
-            'xoa'                => 0,
+            'ten'     => 'Coffee',
         ]);
 
         LoaiThucUong::firstOrCreate([
-            'ten_loai_thuc_uong' => 'Trà sữa',
-            'xoa'                => 0,
+            'ten'     => 'Trà sữa',
         ]);
 
         LoaiThucUong::firstOrCreate([
-            'ten_loai_thuc_uong' => 'Nước ngọt',
-            'xoa'                => 0,
+            'ten'     => 'Nước ngọt',
         ]);
         
         LoaiThucUong::firstOrCreate([
-            'ten_loai_thuc_uong' => 'Trà',
-            'xoa'                => 1,
-            'ghi_chu'            => 'Sản phẩm khách hàng không ưa thích!'
+            'ten'     => 'Trà',
+            'ghi_chu' => 'Sản phẩm khách hàng không ưa thích!'
         ]);
     }
 }

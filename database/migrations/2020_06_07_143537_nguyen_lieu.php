@@ -11,10 +11,10 @@ class NguyenLieu extends Migration
     {
         Schema::create('nguyen_lieu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ten_nguyen_lieu')->nullable();
-            $table->double('don_gia')->nullable();
+            $table->string('ten')->nullable();
             $table->string('don_vi_tinh')->nullable();
-            $table->integer('so_luong_ton')->nullable();
+            $table->unsignedInteger('so_luong_ton')->nullable();
+            $table->unsignedInteger('don_gia')->nullable();
             $table->string('ghi_chu')->nullable();
             $table->timestamps();
             $table->softDeletes();

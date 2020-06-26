@@ -51,33 +51,30 @@ class Handler extends ExceptionHandler
             $preException = $exception->getPrevious();
             if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
                 return response()->json([
-                    'message'   => 'Mã xác thực đã hết hạn!',
-                    'code'      => 401
-                ], 401);
-            } else if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
+                    'code' => 401,
+                    'message' => 'Token is Expired'
+                ]);
+            }
+            else if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
                 return response()->json([
-                    'message'   => 'Mã xác thực không hợp lệ!',
-                    'code'      => 401
-                ], 401);
-            } else if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) {
-                 return response()->json([
-                    'message'   => 'Mã xác thực được đưa vào danh sách đen!',
-                    'code'      => 401
-                 ], 401);
-           }
-           if ($exception->getMessage() === 'Token not provided') {
-               return response()->json([
-                    'message'   => 'Mã xác thực không được cung cấp!',
-                    'code'      => 401
-               ], 401);
-           }
+                    'code' => 401,
+                    'message' => 'Token is Invalid'
+                ]);
+            }
+            else if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) {
+                return response()->json([
+                    'code' => 401,
+                    'message' => 'Token is Blackisted'
+                ]);
+            }
+            else {
+                return response()->json([
+                    'code' => 401,
+                    'message' => 'Authorization Token not found'
+                ]);
+            }
         }
-        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
-            return response()->json([
-                'message'   => 'Bạn không được phép thực hiện chức năng này!',
-                'code'      => 401
-            ]);
-        }
+        
         return parent::render($request, $exception);
     }
 }

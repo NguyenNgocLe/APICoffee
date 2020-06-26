@@ -11,7 +11,7 @@ class LoaiThucUong extends Migration
     {
         Schema::create('loai_thuc_uong', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ten_loai_thuc_uong')->nullable();
+            $table->string('ten')->nullable();
             $table->string('ghi_chu')->nullable();
             $table->timestamps();
             $table->softDeletes();
